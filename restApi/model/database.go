@@ -7,8 +7,10 @@ import (
 	"gorm.io/gorm"
 )
 
+
 func Database() (*gorm.DB, error) {
-	db, err := gorm.Open(postgres.Open("./database.db"), &gorm.Config{})
+	dsn := "host=localhost user=gorm password=gormpass dbname=gorm port=5433 sslmode=disable TimeZone=Asia/Shanghai"
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	if err != nil {
 		log.Fatal(err)
